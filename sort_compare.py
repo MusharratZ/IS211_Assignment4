@@ -4,16 +4,17 @@ import argparse
 import random
 import time
 
+
 def get_me_random_list(n):
     """Generate list of n elements in random order
-    
+
     :params: n: Number of elements in the list
     :returns: A list with n elements in random order
     """
     a_list = list(range(n))
     random.shuffle(a_list)
     return a_list
-    
+
 
 def insertion_sort(a_list):
     for index in range(1, len(a_list)):
@@ -28,24 +29,23 @@ def insertion_sort(a_list):
 
 
 def shellSort(alist):
-    sublistcount = len(alist)//2
+    sublistcount = len(alist) // 2
     while sublistcount > 0:
         for startposition in range(sublistcount):
-            gapInsertionSort(alist,startposition,sublistcount)
+            gapInsertionSort(alist, startposition, sublistcount)
 
-        print("After increments of size", sublistcount, "The list is",alist)
+        print("After increments of size", sublistcount, "The list is", alist)
 
         sublistcount = sublistcount // 2
 
 
 def gapInsertionSort(alist, start, gap):
-
-    for i in range(start+gap, len(alist), gap):
+    for i in range(start + gap, len(alist), gap):
         currentvalue = alist[i]
         position = i
 
-        while position >= gap and alist[position-gap] > currentvalue:
-            alist[position] = alist[position-gap]
+        while position >= gap and alist[position - gap] > currentvalue:
+            alist[position] = alist[position - gap]
             position = position - gap
 
         alist[position] = currentvalue
